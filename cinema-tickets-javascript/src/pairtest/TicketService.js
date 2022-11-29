@@ -8,7 +8,7 @@ export default class TicketService {
 
 confirmedNumberOfAdultTickets;
 confirmedNumberOfChildTickets;
-confirmedNumberOfInfantTickets 
+confirmedNumberOfInfantTickets; 
 
 
 #confirmTicketTypes(requestedTickets){
@@ -57,17 +57,23 @@ purchaseTickets(accountId, ...ticketTypeRequests) {
   
   let totalNumberOfSeats = totalNumberOfTickets - this.confirmedNumberOfInfantTickets;
 
+  let paymentConfirmation;
+  let seatConfirmation; 
 
 try {
-  new TicketPaymentService(accountId, totalPrice);
-  new SeatReservationService(accountId, totalNumberOfSeats);
+  paymentConfirmation = new TicketPaymentService(accountId, totalPrice);
+  seatConfirmation = new SeatReservationService(accountId, totalNumberOfSeats);
 }
-catch (error) {
-  console.log(error)
-}
+  catch (error) {
 
-  
-return `Purchase completed for ${totalNumberOfTickets} tickets at a cost of £ ${totalPrice}`;
+    console.log(error)
+  }
+
+if (paymentConfirmation && seatConfirmation){
+
+    return `Purchase completed for ${totalNumberOfTickets} tickets at a cost of £ ${totalPrice}`;
+ 
+}
 
 }
 

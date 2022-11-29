@@ -3,7 +3,8 @@ import TicketTypeRequest from './lib/TicketTypeRequest.js';
 import TicketService from './TicketService.js';
 
 
-describe("Test ticket purchase class with ....", () => {
+describe("Test TicketService class", () => {
+    
     const TestTicketService = new TicketService();
     let accountId;
     let adultTickets;
@@ -13,7 +14,7 @@ describe("Test ticket purchase class with ....", () => {
     
 
     test(
-        `No ID provided, Should return an error.`, ()=>  {
+        `No account ID provided, should return an error.`, ()=>  {
          accountId = 0;
          adultTickets = 5;
          childTickets = 3;
@@ -23,7 +24,7 @@ describe("Test ticket purchase class with ....", () => {
 
 
     test(
-        `No tickets in the basket, Should return an error.`, ()=>  {
+        `No tickets in the basket, should return an error.`, ()=>  {
          accountId = 1;
          adultTickets = 0;
          childTickets = 0;
@@ -33,7 +34,7 @@ describe("Test ticket purchase class with ....", () => {
 
 
     test(
-        `Request a total of 23 tickets, Should return an error.`, ()=>  {
+        `Request a total of 23 tickets, should return an error.`, ()=>  {
             accountId = 1;
             adultTickets = 15;
             childTickets = 3;
@@ -44,7 +45,7 @@ describe("Test ticket purchase class with ....", () => {
 
 
     test(
-        `Request child and infant tickets only, Should return error`, ()=>  {
+        `Request child and infant tickets only, should return error.`, ()=>  {
             accountId = 1;
             adultTickets = 0;
             childTickets = 3;
@@ -55,7 +56,7 @@ describe("Test ticket purchase class with ....", () => {
 
 
     test(
-        `Request more infant tickeks than adult tickets should return an error`, ()=>   {
+        `Request more infant tickeks than adult tickets, should return an error.`, ()=>   {
             accountId = 1;
             adultTickets = 2;
             childTickets = 3;
@@ -66,7 +67,7 @@ describe("Test ticket purchase class with ....", () => {
 
 
     test(
-        `Input with a string should return an error`, ()=>   {
+        `Input request with a string insteaed of a number, should return an error.`, ()=>   {
             accountId = 1;
             adultTickets = '2';
             childTickets = 3;
@@ -77,7 +78,7 @@ describe("Test ticket purchase class with ....", () => {
 
 
     test(
-        `Provide correct deatils, should compelete the purchase`, ()=>   { 
+        `Provide correct deatils, should compelete the purchase and show correct number of tickets and price.`, ()=>   { 
             accountId = 1;
             adultTickets = 5;
             childTickets = 3;
